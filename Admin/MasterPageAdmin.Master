@@ -1,0 +1,219 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPageAdmin.master.cs" Inherits="Web_tintuc2.Admin.MasterPageAdmin" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                 <div class="Page">
+                     <style>
+
+
+
+            .div_seach{
+                display:inline-block;
+            }
+            .lb_seach{
+                margin-left:18px;
+            }
+            </style>
+                     <div style="text-align: center">
+                         <table style="width: 1350px" border="1">
+                             <tr>
+                                 <td colspan="3" style="height: 186px;">
+                                     <img src="../App_Themes/banner.jpg" /> </td>
+                             </tr>
+                             <tr>
+                                 <td colspan="3" style="text-align: right; height: 30px;">
+                                     <div style="background-color: #3399cc; text-align: right">
+                                         <div style="text-align: right">
+                                             <span style="color: #ffffff"><strong>
+                                             <div style="text-align: center">
+                                                 <style>
+
+
+
+                                            a{
+                                                color:yellowgreen;
+                                                margin-left: 16px;
+                                                font-size:20px;
+                                                font-weight:900;
+                                                text-decoration:none;
+                                                
+                                            }
+                                        </style>
+                                                 <table style="width: 100%">
+                                                     <tr>
+                                                         <td width="77%">
+                                                             <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                                                                 <table>
+                                                                     <td><a href="Trangchu.aspx">Trang chủ </a><a href="Giaitri.aspx">Giải trí </a><a href="">Sức Khỏe </a><a href="">Xã hội </a><a href="">Đời sống </a><a href="">Thế giới </a><a href="">Giáo dục </a><a href="congnghe.aspx">Công nghệ </a></td>
+                                                                 </table>
+                                                             </asp:ContentPlaceHolder>
+                                                         </td>
+                                                         <td align="center" style="width: 100px">
+                                                             <asp:ContentPlaceHolder ID="ContentPlaceHolder5" runat="server">
+                                                             </asp:ContentPlaceHolder>
+                                                         </td>
+                                                     </tr>
+                                                 </table>
+                                             </div>
+                                             </strong></span>
+                                         </div>
+                                     </div>
+                                 </td>
+                             </tr>
+                             <tr>
+                                 <td valign="top" width="20%" style="text-align: left">
+                                     <div style="text-align: left">
+                                         <table style="width: 100%">
+                                             <tr>
+                                                 <td style="width: 103px; height: 187px; background-color:lightcyan; text-align: left;" valign="top">
+                                                     <asp:DataList ID="DataList1" runat="server" 
+                                            DataSourceID="SqlData_TieudeTin" Width="224px">
+                                                         <ItemTemplate>
+                                                             <div style="margin-left:7px; margin-top:2px;margin-bottom:-5px">
+                                                                 <img  style="width:16px;margin-left:8px" src="../App_Themes/here.gif" />
+                                                                 <asp:Label ID="TieuDeLabel" CssClass="label_tieude" runat="server" Text='<%# Eval("TieuDe") %>' />
+                                                             </div>
+                                                             <br />
+                                                             <br />
+                                                             <style>
+
+
+
+                                .label_tieude{
+                                    text-align:justify;
+                                    margin-left: 10px;
+                                }
+                            </style>
+                                                         </ItemTemplate>
+                                                     </asp:DataList>
+                                                     <asp:SqlDataSource ID="SqlData_TieudeTin" runat="server" ConnectionString="<%$ ConnectionStrings:web_tintucConnectionString %>" SelectCommand="SELECT [TieuDe] FROM [Tin] WHERE ([idTin] &lt;= @idTin)">
+                                                         <SelectParameters>
+                                                             <asp:Parameter DefaultValue="5" Name="idTin" Type="Int32" />
+                                                         </SelectParameters>
+                                                     </asp:SqlDataSource>
+                                                 </tr>
+                                             <tr>
+                                                 <td height="28" style="width: 103px; background-color: #003399; text-align: left"
+                                        valign="top">&nbsp;&nbsp;
+                                      <style>
+                                            .div_seach{
+                                    
+                                                width:300px;
+                                               }
+
+                                            .div_left{
+
+                                            width: 35px;
+
+                                            float: left;
+
+                                            text-align: center;
+
+                                            }
+
+                                            .div_right{
+
+                                            width: 30px;
+
+                                            float: left;
+                                            margin-left:200px;
+
+
+                                            }
+                                            .auto-style1
+                                            {
+                                                 height: 200px;
+                                                 width: 303px;
+                                             }  
+                                            .a_quanli{
+                                                font-size:20px;
+                                                margin-left:4px;
+                                                text-decoration:none;
+                                            }
+                                   </style>
+                                                     <div class="div_seach">
+                                                         <div class="div_left">
+                                                             <asp:TextBox runat="server" ID="txt_seach" BackColor="White" Font-Size="16px" ForeColor="#CC3300" Height="21px" Width="215px">Thông tin cần tìm </asp:TextBox>
+                                                         </div>
+                                                         <div class="div_right">
+                                                             <asp:ImageButton ImageUrl="~/App_Themes/Img_seach.gif" runat="server" Height="34px" Width="39px" />
+                                                         </div>
+                                                     </div>
+                                                 </td>
+                                             </tr>
+                                         </table>
+                                     </div>
+                                     <div style="text-align: left">
+                                         <hr />
+                                         <table>
+                                             <tr>
+                                                 <td  class="auto-style1"><a class="a_quanli" href=".../Admin/quanlibaiviet.aspx" >Quản lí bài viết</a>
+                                                     <br />
+                                                     <br /><a class="a_quanli"  href="quanlithanhvien.aspx">Quản lí thành viên</a>
+                                                     <br />
+                                                     <br /><a class="a_quanli" href="quanlibinhluan.aspx">Quản lí bình luận người dùng</a> </td>
+                                             </tr>
+                                         </table>
+                                     </div>
+                                 </td>
+                                 <td valign="top" style="width: 60%">
+                                     <asp:contentplaceholder id="ContentPlaceHolder3" runat="server">
+    &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                     </asp:contentplaceholder>
+                                     &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+                                     <asp:ContentPlaceHolder ID="ContentPlaceHolder4" runat="server">
+                                     </asp:ContentPlaceHolder>
+                                 </td>
+                                 <td style="width: 20%; text-align: right;" valign="top">
+                                     <div style="text-align: center">
+                                     </div>
+                                     <div style="text-align: center">
+                                         <table style="width: 100%">
+                                             <tr>
+                                                 <td style="height: 23px; background-color: #0099cc; text-align: left" width="100%">
+                                                     <asp:Image ID="Image4" runat="server" ImageUrl="~/Pictures/arrow.gif" />
+                                                     <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="18px" ForeColor="White" Text="Sự kiện trong ngày"></asp:Label>
+                                                 </td>
+                                             </tr>
+                                             <tr>
+                                                 <td style="height: 177px; text-align: left; width: 100%;" width="100%">
+                                                     <asp:DataList ID="DataList2" runat="server" Width="236px" DataSourceID="LinqData_SuKien">
+                                                         <ItemTemplate>
+                                                             <div>
+                                                                 <img style="width:25px; height:25px" src="../App_Themes/hot-icon.gif" />
+                                                                 <a style="margin-left:5px; color:orangered; font-size:16px" href="Giaitri.aspx">
+                                                                 <asp:Label ID="MoTaLabel" runat="server" Text='<%# Eval("MoTa") %>' />
+                                                                 </a>
+                                                             </div>
+                                                             <br />
+                                                             <br />
+                                                         </ItemTemplate>
+                                                     </asp:DataList>
+                                                     <asp:LinqDataSource ID="LinqData_SuKien" runat="server" ContextTypeName="Web_tintuc2.Web_tintucDataContext" EntityTypeName="" Select="new (MoTa)" TableName="sukiens" EnableDelete="True" EnableInsert="True" EnableUpdate="True">
+                                                     </asp:LinqDataSource>
+                                                 </td>
+                                             </tr>
+                                         </table>
+                                         <hr />&nbsp;
+                                         <br />
+                                     </div>
+                                 </td>
+                             </tr>
+                         </table>
+                     </div>
+                 </div>
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>

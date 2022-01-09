@@ -1,0 +1,155 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Trangchu.master.cs" Inherits="Web_tintuc2.Trangchu" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<title>Tin tức online</title>
+     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="CSS/StyleSheet.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style>
+    li {
+    display: inline-block;
+    list-style-type:none;
+    font-size: 20px;
+    padding: 10px;
+}
+    .div_left{
+
+width: 150px;
+margin-bottom:20px;
+margin-left:-50px;
+
+float: left;
+
+text-align: center;
+
+}
+
+.div_right{
+
+width: 600px;
+
+float: right;
+margin-top:8px;
+
+
+text-align: center;
+
+}
+    </style>
+</head>
+
+<body>
+    <form id="form1" runat="server">
+    <div class="Page">
+        <div style="text-align: center">
+            <table style="width: 1350px" border="1">
+                <tr>
+                    <td colspan="2" style="background-image: url(App_Themes/banner.jpg); height: 186px;">
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: right; " class="auto-style1">
+                        <div style="background-color: #3399cc; text-align: right">
+                            <div style="text-align: right">
+                                <span style="color: #ffffff">
+                                <strong>
+                                    <div style="text-align: center">
+                                        <table style="width: 100%">
+                                            <tr>
+                                                <td width="77%" height="10px">
+                                                    <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server" >
+                                                        <table>
+                                                            <td>
+                                                                <div class="nenu">
+                                                                    <ul>
+                                                                        <div class="menu">
+                                                                            <div class="div_left">
+                                                                                <a href="Trangchu.aspx">Trang chủ </a>
+                                                                            </div>
+                                                                            <div class="div_right">
+                                                                                <asp:DataList ID="DataList3" runat="server" RepeatColumns="7" Height="23px" CssClass="asp_data" Width="632px" Style="margin-top: -8px">
+                                                                                    <ItemTemplate>
+                                                                                        <asp:HyperLink ID="HyperLink5" runat="server" Text='<%# Eval("Ten") %>' NavigateUrl='<%# "TinTheoLoai.aspx?idLT="+Eval("idLT") %>' Font-Bold="True"></asp:HyperLink>
+                                                                                    </ItemTemplate>
+                                                                                </asp:DataList>
+                                                                            </div>
+                                                                        </div>
+                                                                    </ul>
+                                                                </div>
+                                                            </td>
+                                                        </table>
+                                                    </asp:ContentPlaceHolder>
+                                                </td>
+                                                <td align="center" style="width: 100px">
+                                                    <%if (Session["admin"] == null)
+                                                        {%>
+                                                     <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Dangnhap.aspx" Font-Bold="True" ForeColor="Yellow">Đăng nhập</asp:HyperLink>
+                                                    <asp:HyperLink ID="HyperLink4" runat="server" Font-Bold="True" ForeColor="Yellow"
+                                                        NavigateUrl="~/DangKi.aspx">Đăng ký</asp:HyperLink>
+                                                    <%
+                                                        }
+                                                        else
+                                                        {
+                                                                %>  <asp:Label ID="lb_sesion" runat="server" Font-Size="14pt"></asp:Label>
+                                                                        <asp:Button ID="Button1" runat="server" Text="Đăng xuất" BackColor="#3399CC" BorderColor="#3399CC" BorderStyle="None" Font-Bold="True" Font-Size="14pt" ForeColor="Yellow" Height="30px" OnClick="Button1_Click" Width="122px" />
+                                                            <%}
+                                                                %>
+                                                </td>
+                                                </tr>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </strong>
+                                </span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" style="width: 60%">
+        <asp:contentplaceholder id="ContentPlaceHolder1" runat="server">
+                        </asp:contentplaceholder>
+                         <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server">
+                            <asp:ContentPlaceHolder ID="ContentPlaceHolder4" runat="server">
+                            </asp:ContentPlaceHolder>
+                        </asp:ContentPlaceHolder>
+                    </td>
+                    <td style="width: 20%; text-align: right;" valign="top">
+                        <div style="text-align: center">
+                        </div>
+                        <div style="text-align: center">
+                            <table style="width: 100%">
+                                <tr>
+                                    <td style="height: 23px; background-color: #0099cc; text-align: left" width="100%">
+                                        <asp:Image ID="Image4" runat="server" ImageUrl="~/Pictures/arrow.gif" />
+                                        <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="18px" ForeColor="White" Text="Sự kiện trong ngày"></asp:Label></td>
+                                </tr>
+                                <tr>
+                                    <td style="height: 177px; text-align: left; width: 100%;" width="100%">
+                                        <asp:DataList ID="DataList2" runat="server" Width="236px" DataSourceID="LinqData_SuKien">
+                                            <ItemTemplate>
+                                                <div>  <img style="width:25px; height:25px" src="App_Themes/hot-icon.gif" />
+                                               <a style="margin-left:5px; color:orangered; font-size:16px" href="Giaitri.aspx">  <asp:Label ID="MoTaLabel" runat="server" Text='<%# Eval("MoTa") %>' /></a></div>                                              
+                                                <br /><br />
+                                            </ItemTemplate>
+                                        </asp:DataList>
+                                      
+                                        <asp:LinqDataSource ID="LinqData_SuKien" runat="server" ContextTypeName="Web_tintuc2.Web_tintucDataContext" EntityTypeName="" Select="new (MoTa)" TableName="sukiens" EnableDelete="True" EnableInsert="True" EnableUpdate="True">
+                                        </asp:LinqDataSource>
+                                      
+                                    </td>
+                                </tr>
+                            </table>
+            </table>
+        </div>
+    </div>
+    </form>
+</body>
+</html>

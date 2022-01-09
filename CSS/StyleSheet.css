@@ -1,0 +1,25 @@
+﻿body {
+    font-size: 14px;
+    background-color: #FFFFE1;
+    padding: 1px;
+    margin: 1px;
+    margin-left: -2px;
+}
+/*
+.Page
+{
+	padding: 0px;
+	margin: 0px auto 0px auto;
+	width: 800px;
+	background-color: #FFFFFF;
+	
+}
+	*/
+a {
+    margin-left: 10px;
+    text-decoration: none;
+    font-size: 20px;
+    color: greenyellow;
+}
+
+
